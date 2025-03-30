@@ -13,7 +13,7 @@
         style="width: 46px; height: 36px"
         alt=""
       />
-      <p>邮箱：postmaster@dadaoqiyun.com</p>
+      <p>邮箱：553732960@qq.com</p>
     </div>
     <div class="iconBox">
       <img
@@ -22,7 +22,7 @@
         style="width: 46px; height: 45px"
         alt=""
       />
-      <p>电话：0571-8277 9395/ 9299 6725</p>
+      <p>电话:12345678910</p>
     </div>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
   props: {},
   components: {},
   mounted() {},
-  methods: {},
+  methods: {}
 };
 </script>
 
@@ -50,13 +50,13 @@ export default {
     justify-content: center;
     flex-direction: column;
     .QRbox {
-      border: 3px solid #B69D74;
+      border: 3px solid #b69d74;
       margin-bottom: 26px;
       padding: 3px;
       .QRcode {
         width: 140px;
         height: 140px;
-        display: block;        
+        display: block;
       }
     }
 
@@ -72,13 +72,13 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      span{
+      span {
         display: block;
         border-radius: 50%;
         width: 12px;
         height: 12px;
         margin: 0 10px;
-        background-color: #B69D74;
+        background-color: #b69d74;
       }
     }
   }

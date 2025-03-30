@@ -28,18 +28,17 @@ export default {
       info: [
         {
           img: require("../assets/7_contact/icon_address.png"),
-          text:
-            "公司地址：浙江省杭州市萧山区鸿宁路钱江世纪城望京商务中心B座40A",
+          text: "公司地址：adsssc"
         },
         {
           img: require("../assets/7_contact/icon_email.png"),
-          text: "电子邮箱：postmaster@dadaoqiyun.com",
+          text: "电子邮箱：553732960@qq.com"
         },
         {
           img: require("../assets/7_contact/icon_phone.png"),
-          text: "联系电话：0571-82901288",
-        },
-      ],
+          text: "联系电话：12345678910"
+        }
+      ]
     };
   },
   computed: {},
@@ -49,8 +48,8 @@ export default {
   methods: {
     getIndex(index) {
       this.navIndex = index;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -58,7 +57,7 @@ export default {
 .content {
   padding: 40px 75px 0;
 }
-.infoBox{
+.infoBox {
   display: flex;
   margin-bottom: 38px;
   /* align-items: center; */
@@ -68,7 +67,7 @@ export default {
   width: 36px;
   height: 36px;
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size: contain;
   background-position: center;
   margin-right: 15px;
 }
