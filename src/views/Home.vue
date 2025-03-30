@@ -8,7 +8,7 @@
         :not-next-tick="notNextTick"
         ref="mySwiper"
       >
-        <swiper-slide>
+        <!-- <swiper-slide>
           <div class="swiper_video">
             <video autoplay loop muted>
               <source
@@ -18,7 +18,7 @@
               Your browser does not support the video tag.
             </video>
           </div>
-        </swiper-slide>
+        </swiper-slide> -->
         <swiper-slide v-for="(item, index) in swiperImg" :key="index">
           <div
             class="swiper_img"
@@ -36,16 +36,21 @@
       <div class="splitline"></div>
       <div class="infoBox">
         <div class="profile">
-          <img src="../assets/1_home/logo_profile.png" alt="" />
+          <!-- <img src="../assets/0_common/kunxiLogo.png" alt="" /> -->
+          <span class="title">焜曦教育</span>
           <p>
-            大稻启运最早成立于2007年, 总部坐落在美丽的杭州钱塘江畔。核心业务包括地产开发、工程建设、产业投资等。在多元化的经营理念下，大稻启运积极拓展业务版图，使其经济实力和区域影响力不断地快速提升。
+            焜曦教育集团自2012年起，十几年来，一直专注于工业机器人技术人才的培养，通过深入有效的校企合作，打通产业链、创新链、教育链、人才链，在济南、青岛、淄博、德州、威海、泰安、济宁、烟台、潍坊、石家庄、西安等地设立培训基地.
           </p>
         </div>
         <div class="splitline_y"></div>
-        <div class="headline" @click="goNews(headline)">
-          <p class="title">{{ headline.title }}</p>
-          <p class="time">{{ headline.create_time }}</p>
-          <p class="content" v-html="headline.text"></p>
+        <div class="headline">
+          <p class="title">主营业务</p>
+          <p class="time"></p>
+          <p class="content">
+            ·工业机器人的研发、设计、安装调试、维修和维护<br />
+            ·人才培养——学历教育、技能提升<br />
+            ·人力资源及劳务派遣等
+          </p>
         </div>
         <div class="splitline_y"></div>
         <div class="newsBox">
@@ -55,19 +60,10 @@
               :class="{ typename_chose: news_type == 0 || news_type == -1 }"
               @click="typeChose(0)"
             >
-              <p>集团新闻</p>
-              <div
-                class="underline"
-                v-show="news_type == 0 || news_type == -1"
-              ></div>
-            </div>
-            <div
-              class="typename"
-              :class="{ typename_chose: news_type == 1 }"
-              @click="typeChose(1)"
-            >
-              <p>版块动态</p>
-              <div class="underline" v-show="news_type == 1"></div>
+              <p>集团优势</p>
+              <div class="underline">
+                集团从工业机器人的研发、流水线设计、生产到工业机器人设备的维修、维护等具备了全体系的建设实力，目前合作或服务的生产型及应用型机器人企业23家，从设计到生产都遵循严格的流程和标准，采用国内外先进精密机械、加工设备及计算机辅助设计软件。
+              </div>
             </div>
           </div>
           <div class="newsBox_con" v-if="news_type == -1">
@@ -79,7 +75,8 @@
                 @click="goNews(item)"
               >
                 <p>
-                  <span>{{ item.create_time }}</span>{{ item.title }}
+                  <span>{{ item.create_time }}</span
+                  >{{ item.title }}
                 </p>
               </div>
             </div>
@@ -95,7 +92,10 @@
                 :key="index"
                 @click="goNews(item)"
               >
-                <p><span>{{ item.create_time }}</span>{{ item.title }}</p>
+                <p>
+                  <span>{{ item.create_time }}</span
+                  >{{ item.title }}
+                </p>
               </div>
             </div>
             <div
@@ -126,11 +126,16 @@
       </div>
     </div>
     <div class="estate">
-      <div class="estateImg" @click="goEstate(0)"></div>
-      <div class="estateImg" @click="goEstate(1)"></div>
-      <div class="estateImg" @click="goEstate(2)"></div>
-      <div class="estateImg" @click="goEstate(3)"></div>
-      <div class="estateImg" @click="goEstate(4)"></div>
+      <!-- @click="goEstate(0)
+@click="goEstate(1)
+@click="goEstate
+@click="goEstate
+@click="goEstate -->
+      <div class="estateImg"></div>
+      <div class="estateImg"></div>
+      <div class="estateImg"></div>
+      <div class="estateImg"></div>
+      <div class="estateImg"></div>
     </div>
     <pageFooter></pageFooter>
   </div>
@@ -156,32 +161,36 @@ export default {
         nextButton: ".swiper-button-next",
         // mousewheelControl: true,//鼠标滚轮控制轮播
         bserver: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        observeParents: true //修改swiper的父元素时，自动初始化swiper
         // onTransitionStart(swiper) {
         //   console.log(swiper);
         // },
       },
       swiperImg: [
-        { img: require("../assets/1_home/swiper1.jpg") },
-        { img: require("../assets/1_home/swiper2.jpg") },
-        { img: require("../assets/1_home/swiper3.jpg") },
+        { img: require("../assets/pic333.jpg") },
+        { img: require("../assets/pic222.jpg") },
+        { img: require("../assets/pic111.jpg") },
+        { img: require("../assets/pic555.jpg") },
+        { img: require("../assets/pic666.jpg") },
+        { img: require("../assets/pic999.jpg") }
       ],
       intro: [
         {
           img: require("../assets/1_home/intro1.png"),
           title: "企业定位",
-          text: "成为城市商业产业服务的一流供应商。",
+          text:
+            "以卓越的教育质量和创新的教育模式，培养出技能型、高水平的优秀人才。"
         },
         {
           img: require("../assets/1_home/intro2.png"),
           title: "企业文化",
-          text: "与同道者同行，与同行者同享。",
+          text: "培养兼具知识与技能的时代栋梁。"
         },
         {
           img: require("../assets/1_home/intro3.png"),
           title: "企业信仰",
-          text: "真诚、专注、极致、完美",
-        },
+          text: "育人至上、专业精进、诚信协作"
+        }
       ],
       news: [
         // {
@@ -220,7 +229,7 @@ export default {
         // },
       ],
       headline: {},
-      news_type: -1, //新闻类型，0为集团新闻，1为板块动态，-1为未切换过类型
+      news_type: -1 //新闻类型，0为集团新闻，1为板块动态，-1为未切换过类型
     };
   },
   props: ["isScroll"],
@@ -228,59 +237,22 @@ export default {
   computed: {
     swiper() {
       return this.$refs.mySwiper.swiper;
-    },
+    }
   },
   mounted() {
     // you can use current swiper instance object to do something(swiper methods)
     // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
     // console.log("this is current swiper instance object", this.swiper);
     // this.swiper.slideTo(1, 1000, false);
-    this.getNews();
   },
   methods: {
-    // 获取新闻动态列表
-    getNews() {
-      this.$axios({
-        url: "http://news.youtuosoftware.com/API/Article/GetArticleList",
-        method: "post",
-        data: {
-          pageNum: 1,
-          pageSize: 10,
-        },
-      }).then((res) => {
-        var Textrules = new RegExp("<.+?>", "g"); //匹配html标签的正则表达式，"g"是搜索匹配多个符合的内容
-        if (this.news_type <= 0) {
-          var news = [];
-          for (var i of res.data.datalist) {
-            if (i.type == "资讯") {
-              news.push(i);
-            }
-            i.create_time = i.create_time.split("T")[0];
-            i.text = i.content.replace(Textrules, "");
-          }
-          this.news = news;
-          this.headline = this.news[0];
-        } else {
-          var news = [];
-          for (var i of res.data.datalist) {
-            if (i.type == "动态") {
-              news.push(i);
-            }
-            i.create_time = i.create_time.split("T")[0];
-            i.text = i.content.replace(Textrules, "");
-          }
-          this.tendency = news;
-          this.headline = this.tendency[0];
-        }
-      });
-    },
     // 前往新闻页
     goNews(item) {
       var pageitem = {
         name: "News",
         url: "/news",
         index: 5,
-        item,
+        item
       };
       this.$refs.borrow.goPage_News(pageitem);
     },
@@ -295,11 +267,11 @@ export default {
         name: "Estate",
         url: "/estate",
         index: 3,
-        selectIndex,
+        selectIndex
       };
       this.$refs.borrow.goPage_Estate(pageitem);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -393,8 +365,8 @@ export default {
       }
       .profile {
         img {
-          width: 147px;
-          height: 38px;
+          width: 150px;
+          height: 150px;
           display: block;
           margin-bottom: 17px;
         }
@@ -454,8 +426,9 @@ export default {
               margin-bottom: 5px;
             }
             .underline {
-              width: 100%;
+              width: 300px;
               height: 4px;
+              font-size: 16px;
               background: #b69d74;
               margin-bottom: 22px;
             }
@@ -540,14 +513,14 @@ export default {
       }
       p.introTitle {
         font-size: 20px;
-        font-family: '宋体';
+        font-family: "宋体";
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 5px;
       }
       p.introText {
         font-size: 14px;
-        font-family: '宋体';
+        font-family: "宋体";
         font-weight: bold;
         color: #ffffff;
         opacity: 0.9;
@@ -569,25 +542,25 @@ export default {
     }
     .estateImg:nth-child(1) {
       width: 27%;
-      background-image: url("../assets/1_home/estate1.png");
+      background-image: url("../assets/pic111.jpg");
     }
     .estateImg:nth-child(1):hover {
       width: 35%;
     }
     .estateImg:nth-child(2) {
       width: 18%;
-      background-image: url("../assets/1_home/estate2.png");
+      background-image: url("../assets/1_home/estate2.jpg");
     }
     .estateImg:nth-child(2):hover {
       width: 25%;
     }
     .estateImg:nth-child(3) {
       width: 21%;
-      background-image: url("../assets/1_home/estate3.png");
+      background-image: url("../assets/pic333.jpg");
     }
     .estateImg:nth-child(4) {
       width: 11%;
-      background-image: url("../assets/1_home/estate4.png");
+      background-image: url("../assets/1_home/45666.jpg");
       background-position: 55% 0%;
     }
     .estateImg:nth-child(4):hover {
@@ -595,7 +568,7 @@ export default {
     }
     .estateImg:nth-child(5) {
       width: 23%;
-      background-image: url("../assets/1_home/estate5.png");
+      background-image: url("../assets/1_home/12345.jpg");
     }
     .estateImg:nth-child(5):hover {
       width: 34%;

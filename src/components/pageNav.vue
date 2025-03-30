@@ -56,45 +56,45 @@ export default {
       selectName: "",
       selectItem: 0, //选中的nav 默认为第一个
       pageNav: [
-        {
-          index: 2,
-          name: "走进大稻",
-          listName: ["企业介绍", "企业架构", "企业愿景"],
-        },
-        {
-          index: 3,
-          name: "大稻产业",
-          listName: ["大稻地产", "大稻建设", "产业投资", "大健康", "文化艺术"],
-        },
-        {
-          index: 4,
-          name: "合作伙伴",
-          listName: ["设计单位", "平台资源"],
-        },
-        {
-          index: 5,
-          name: "新闻动态",
-          listName: [],
-        },
-        {
-          index: 6,
-          name: "加入大稻",
-          listName: ["组织文化", "人才招聘"],
-        },
-        {
-          index: 7,
-          name: "联络大稻",
-          listName: [],
-        },
-      ],
+        // {
+        //   index: 2,
+        //   name: "走进大稻",
+        //   listName: ["企业介绍", "企业架构", "企业愿景"]
+        // },
+        // {
+        //   index: 3,
+        //   name: "大稻产业nav-mobile",
+        //   listName: ["大稻地产", "大稻建设", "产业投资", "大健康", "文化艺术"]
+        // },
+        // {
+        //   index: 4,
+        //   name: "合作伙伴",
+        //   listName: ["设计单位", "平台资源"]
+        // },
+        // {
+        //   index: 5,
+        //   name: "新闻动态",
+        //   listName: []
+        // },
+        // {
+        //   index: 6,
+        //   name: "加入大稻",
+        //   listName: ["组织文化", "人才招聘"]
+        // },
+        // {
+        //   index: 7,
+        //   name: "联络大稻",
+        //   listName: []
+        // }
+      ]
     };
   },
-  props: ["navIndex",'sendSelect'],
+  props: ["navIndex", "sendSelect"],
   components: {},
   mounted() {},
-  created () {    
-    if(this.sendSelect){
-      this.selectItem = this.sendSelect
+  created() {
+    if (this.sendSelect) {
+      this.selectItem = this.sendSelect;
     }
   },
   methods: {
@@ -102,8 +102,8 @@ export default {
       this.selectName = item;
       this.selectItem = index;
       this.$emit("send", this.selectItem);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -114,7 +114,6 @@ export default {
     position: relative;
     overflow: hidden;
     height: 180px;
-
   }
   .navBox {
     height: 88px;

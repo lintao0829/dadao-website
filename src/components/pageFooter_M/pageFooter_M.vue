@@ -2,8 +2,8 @@
   <!-- 底部信息组件 -->
   <div class="footer">
     <p>
-      版权所有：大稻启运集团<br />
-      备案号 浙ICP备18048792号-1
+      版权所有：焜曦教育<br />
+      备案号 鲁ICP备18048792号-1
     </p>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   props: {},
   components: {},
   mounted() {},
-  methods: {},
+  methods: {}
 };
 </script>
 

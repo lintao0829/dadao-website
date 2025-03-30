@@ -2,27 +2,30 @@
   <footer>
     <!-- 版权信息 -->
     <div class="copyright">
-      <p>版权所有：大稻启运集团 I 备案号 <a href="https://beian.miit.gov.cn" target="_blank">浙ICP备18048792号-1</a></p>
-      <p>联系大稻启运：400011000</p>
+      <p>
+        版权所有：焜曦教育 备案号
+        <a href="https://beian.miit.gov.cn" target="_blank">鲁123456789</a>
+      </p>
+      <p>联系焜曦教育：13188971869</p>
     </div>
     <!-- 媒体平台 -->
     <div class="media">
-      <p>关注大稻启运</p>
+      <p>关注焜曦教育</p>
       <div class="iconBox">
         <div class="icon">
           <img src="@/assets/0_common/icon_wechat.png" alt="" />
           <div class="show">
-            <p>扫码关注公众号</p>
-            <img src="../../assets/0_common/QRcode.png" alt="" />
+            <p>扫码了解详情</p>
+            <img src="../../assets/0_common/qrcode.jpg" alt="" />
           </div>
         </div>
-        <div class="icon">
+        <!-- <div class="icon">
           <img src="@/assets/0_common/icon_miniP.png" alt="" />
           <div class="show">
             <p>扫码使用小程序</p>
             <img src="../../assets/0_common/miniCode.png" alt="" />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </footer>
@@ -37,7 +40,7 @@ export default {
   props: {},
   components: {},
   mounted() {},
-  methods: {},
+  methods: {}
 };
 </script>
 
@@ -59,11 +62,11 @@ footer {
   .copyright {
     p:first-child {
       margin-bottom: 10px;
-      a{
+      a {
         color: white;
         text-decoration: none;
       }
-      a:hover{
+      a:hover {
         color: rgb(0, 132, 255);
       }
     }
@@ -108,7 +111,7 @@ footer {
             margin-right: 5px;
             color: #666666;
           }
-          img{
+          img {
             width: 130px;
             height: 130px;
           }

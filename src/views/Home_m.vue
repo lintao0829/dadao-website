@@ -10,17 +10,6 @@
           :not-next-tick="notNextTick"
           ref="mySwiper"
         >
-          <swiper-slide>
-            <div class="swiperVideo">
-              <video autoplay loop muted>
-                <source
-                  src="../assets/1_home/Timelapse_Crown.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </swiper-slide>
           <swiper-slide v-for="(item, index) in swiperImg" :key="index">
             <div
               class="swiperImg"
@@ -33,16 +22,65 @@
       </div>
       <!-- 关于 -->
       <div class="about">
-        <p class="title">关于大稻启运</p>
-        <p class="subTitle">ABOUT DA DAO QI YUN</p>
+        <p class="title">关于焜曦教育</p>
+        <p class="subTitle">ABOUT KUN XI JIAO YU</p>
         <p class="text">
-          大稻启运最早成立于2007年,总部坐落<br />
-          在美丽的杭州钱塘江畔。核心业务包括地产开发、<br />
-          工程建设、产业投资、高端医疗及艺术投资。<br />
-          在多元化的经营理念下，大稻启运积极<br />
-          拓展业务版图，使其经济实力和区域<br />
-          影响力不断地快速提升。<br />
+          <span style="font-size: 14px;"> 焜曦集团成立于2012年，下设：</span>
+          <br />
+          焜曦（山东）教育科技有限公司
+          <br />
+          东企新程（山东）教育咨询有限公司
+          <br />
+          德州焜曦职业培训学校
+          <br />
+          青岛焜曦人力资源有限公司
+          <br />
         </p>
+        <div class="advantages-container">
+          <!-- 优势1：全产业链实力 -->
+          <div class="advantage-item">
+            <span class="advantage-title">【全产业链实力】</span>
+            <span class="advantage-content">
+              集团构建工业机器人研发→流水线设计→生产→设备维保全链条体系，<br />
+              服务23家生产型/应用型机器人企业，<br />
+              采用国际先进精密设备及CAD设计软件，<br />
+              执行高于行业标准的全流程品控。
+            </span>
+          </div>
+
+          <!-- 优势2：人才培养体系 -->
+          <div class="advantage-item">
+            <span class="advantage-title">【创新教育标杆】</span>
+            <span class="advantage-content">
+              践行"诚信·求精·创新"教育理念，<br />
+              独创"双元制"人才培养模式，<br />
+              累计输送专业技术人才10万+，<br />
+              毕业生就业竞争力行业领先。
+            </span>
+          </div>
+
+          <!-- 优势3：教学资源保障 -->
+          <div class="advantage-item">
+            <span class="advantage-title">【精英教学团队】</span>
+            <span class="advantage-content">
+              拥有国家级教学名师领衔的师资队伍，<br />
+              实施"专业技能+职业素养"双元培育，<br />
+              毕业生企业好评率连续5年达98.7%，<br />
+              校企共建20+实训示范基地。
+            </span>
+          </div>
+
+          <!-- 优势4：就业保障体系 -->
+          <div class="advantage-item">
+            <span class="advantage-title">【就业保障典范】</span>
+            <span class="advantage-content">
+              独创项目制实战教学模式，<br />
+              应届生提前录用率91.5%，<br />
+              现有在校生规模4000+，<br />
+              合作企业年度人才预定超2000岗。
+            </span>
+          </div>
+        </div>
       </div>
       <!-- 介绍 -->
       <div class="intro">
@@ -59,7 +97,7 @@
           v-for="(item, index) in estate"
           :key="index"
           :style="{ backgroundImage: 'url(' + item.img + ')' }"
-          @click="goEstate(index)"
+          @click="goEstate(item.id)"
         >
           <div class="textBox">
             <p class="title_EN" v-html="item.title_EN"></p>
@@ -69,7 +107,7 @@
         </div>
       </div>
     </div>
-    <pageFooter_M></pageFooter_M>
+    <!-- <pageFooter_M></pageFooter_M> -->
   </div>
 </template>
 
@@ -89,68 +127,85 @@ export default {
         pagination: ".swiper-pagination",
         paginationClickable: true,
         bserver: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swiper
+        observeParents: true //修改swiper的父元素时，自动初始化swiper
       },
       swiperImg: [
-        { img: require("../assets/1_home_M/swiper1.png") },
-        { img: require("../assets/1_home_M/swiper2.png") },
-        { img: require("../assets/1_home_M/swiper3.png") },
+        { img: require("../assets/pic333.jpg") },
+        { img: require("../assets/pic222.jpg") },
+        { img: require("../assets/pic111.jpg") },
+        { img: require("../assets/pic555.jpg") },
+        { img: require("../assets/pic666.jpg") },
+        { img: require("../assets/pic999.jpg") }
       ],
       intro: [
         {
           img: require("../assets/1_home_M/intro1.png"),
-          title: "企业定位",
-          text: "成为城市商业产业<br>服务的一流供应商。",
+          title: "主营业务",
+          text:
+            "工业机器人<br>教育教学检测<br>学历教育、技能提升<br>人才资源及劳动派遣"
         },
         {
           img: require("../assets/1_home_M/intro2.png"),
-          title: "企业文化",
-          text: "与同道者同行，<br>与同行者同享。",
+          title: "开设专业",
+          text: "工业机器人<br>无人机<br>新媒体<br>电子商务"
         },
         {
           img: require("../assets/1_home_M/intro3.png"),
-          title: "企业信仰",
-          text: "真诚、专注、<br>极致、完美。",
-        },
+          title: "培养类型",
+          text: "学历教育<br>高级技工<br>短期培训<br>薪资提级"
+        }
       ],
       estate: [
         {
-          title: "大稻地产",
-          title_EN: "DA DAO<br>REAL ESTATE",
-          img: require("../assets/1_home_M/estate1.png"),
-        },
-        {
-          title: "企业建设",
-          title_EN: "ENTERPRISE<br>CONSTRUCTION",
+          title: "焜曦简介",
+          title_EN: "KUNXI<br>INTRO",
           img: require("../assets/1_home_M/estate2.png"),
+          id: 2
         },
         {
-          title: "产业投资",
-          title_EN: "INDUSTRY<br>INVESTMENT",
+          title: "合作院校",
+          title_EN: "PARTNER<br>INSTITUTION",
+          img: require("../assets/1_home_M/estate1.png"),
+          id: 1
+        },
+        {
+          title: "培养类型",
+          title_EN: "CULTRUE<br>TYPE",
           img: require("../assets/1_home_M/estate3.png"),
+          id: 3
         },
         {
-          title: "大健康",
-          title_EN: "HEALTH",
+          title: "企业文化与价值观",
+          title_EN: "CORPORATE<br>CULTRUE",
           img: require("../assets/1_home_M/estate4.png"),
+          id: 4
         },
         {
-          title: "文化艺术",
-          title_EN: "CULTURE<br>AND ART",
-          img: require("../assets/1_home_M/estate5.png"),
+          title: "学生风采",
+          title_EN: "CONTACT<br>US",
+          img: require("../assets/pic444.jpg"),
+          id: 8
         },
-      ],
+        {
+          title: "联系我们",
+          title_EN: "CONTACT<br>US",
+          img: require("../assets/1_home_M/estate5.png"),
+          id: 5
+        }
+        // 6---校长介绍人工智能   7---教师风采
+      ]
     };
   },
-  props: {},
-  components: {},
-  mounted() {},
   methods: {
-    goEstate(index) {
-      this.$refs.borrow.outChoose(2);
-      this.$refs.borrow.navChildChoose(index);
-    },
-  },
+    goEstate(id) {
+      this.$router.push({
+        name: "Estate_m",
+        query: {
+          id: id
+        }
+      });
+    }
+  }
 };
 </script>
 
@@ -201,7 +256,6 @@ export default {
 /* 关于 */
 .about {
   width: 100%;
-  /* height: 292px; */
   padding: 30px 0;
   display: flex;
   align-items: center;
@@ -248,6 +302,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 30%;
 }
 .intro .introBox img {
   width: 60px;
@@ -269,7 +324,7 @@ export default {
   color: #3d3d3d;
   line-height: 26px;
   opacity: 0.9;
-  /* text-align: center; */
+  text-align: center;
 }
 /* 产业 */
 .estate {
@@ -313,5 +368,49 @@ export default {
   position: absolute;
   right: 48px;
   bottom: 24px;
+}
+.advantages-container {
+  margin: 0 auto;
+  margin: 30px 10px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.advantage-item {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.advantage-item:hover {
+  transform: translateX(10px);
+}
+
+.advantage-title {
+  display: block;
+  font-size: 24px;
+  color: #303133;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.advantage-content {
+  display: block;
+  font-size: 20px;
+  color: #606266;
+  line-height: 1.8;
+  padding-left: 10px;
+  border-left: 2px solid #ebeef5;
+}
+
+.advantage-content br {
+  display: block;
+  content: "";
+  margin: 8px 0;
 }
 </style>

@@ -15,12 +15,15 @@
         @click="openNavLists"
         alt=""
       />
-      <img src="@/assets/0_common_M/logo.png" alt="" />
+      <span style="color:#000099;font-size: 14px;font-weight: 800;"
+        >焜曦教育</span
+      >
+      <img src="@/assets/0_common/kunxiLogo.png" alt="" />
     </div>
     <div
       class="navlists"
       :class="[
-        isOpened == true ? (isOpen == true ? 'navShow' : 'navHide') : '',
+        isOpened == true ? (isOpen == true ? 'navShow' : 'navHide') : ''
       ]"
     >
       <div
@@ -65,114 +68,63 @@ export default {
         {
           title: "首页",
           name: "Home_m",
+          name2: "Estate_m",
           url: "/home_m",
           index: 1,
-          children: [],
+          children: []
         },
         {
-          title: "走进大稻",
-          name: "About_m",
-          url: "/about_m",
+          title: "工业机器人",
+          name: "robot",
+          name2: "Estate_m",
+          url: "/robot",
           index: 2,
-          children: [
-            {
-              title: "企业介绍",
-              index: 1,
-            },
-            {
-              title: "企业理念",
-              index: 2,
-            },
-            {
-              title: "企业架构",
-              index: 3,
-            },
-          ],
+          children: []
         },
         {
-          title: "大稻产业",
-          name: "Estate_m",
-          url: "/estate_m",
+          title: "走进焜曦",
+          name: "About_m",
+          name2: "Estate_m",
+          url: "/about_m",
           index: 3,
           children: [
             {
-              title: "大稻地产",
+              title: "集团介绍",
               index: 1,
+              ids: 2
             },
             {
-              title: "大稻建设",
+              title: "合作院校资源",
               index: 2,
+              ids: 1
             },
             {
-              title: "产业投资",
+              title: "学习生活",
               index: 3,
+              ids: 6
             },
             {
-              title: "大健康",
+              title: "名师团队",
               index: 4,
-            },
-            {
-              title: "文化艺术",
-              index: 5,
-            },
-          ],
+              ids: 7
+            }
+          ]
         },
+        // estate_m?id=5
         {
-          title: "合作伙伴",
-          name: "Partner_m",
-          url: "/partner_m",
+          title: "联系我们",
+          name: "Estate_m",
+          name2: "Estate_m",
           index: 4,
-          children: [
-            {
-              title: "设计单位",
-              index: 1,
-            },
-            {
-              title: "知名企业",
-              index: 2,
-            },
-            {
-              title: "俱乐部",
-              index: 3,
-            },
-          ],
-        },
-        {
-          title: "新闻动态",
-          name: "News_m",
-          url: "/news_m",
-          index: 5,
-          children: [],
-        },
-        {
-          title: "加入大稻",
-          name: "Join_m",
-          url: "/join_m",
-          index: 6,
-          children: [
-            {
-              title: "组织文化",
-              index: 1,
-            },
-            {
-              title: "人才招聘",
-              index: 2,
-            },
-          ],
-        },
-        {
-          title: "联络大稻",
-          name: "Contact_m",
-          url: "/contact_m",
-          index: 7,
-          children: [],
-        },
+          ids: 5,
+          children: []
+        }
       ],
       isOpen: false, //是否打开 导航栏
       isOpened: false, //是否打开过 导航栏
       navChild: [],
       navIndex: "",
-      navChildIndex: "",
+      navChildIndex: ""
     };
   },
   props: [],
@@ -187,43 +139,48 @@ export default {
       this.navChild = [];
     },
     navChoose(item, index) {
+      console.log(item, index);
       this.navChild = item;
       this.navIndex = index;
+      console.log(this.navlist[index].name, " this.navlist[index].name");
       if (this.navlist[index].children.length == 0) {
         this.isOpen = false;
         // console.log("前往 " + this.navlist[index].title + " 页");
         this.$router.push({
-          name: this.navlist[index].name
+          name: this.navlist[index].name,
+          query: {
+            id: this.navlist[index].ids
+          }
         });
       }
     },
-    outChoose(index){
+    outChoose(index) {
       this.navIndex = index;
     },
     navChildChoose(index) {
       this.navChildIndex = index;
       this.isOpen = false;
-      // console.log(
-      //   "前往 " +
-      //     this.navlist[this.navIndex].title +
-      //     "-" +
-      //     this.navChild[this.navChildIndex].title +
-      //     " 页"
-      // );
+      console.log(
+        this.navlist[this.navIndex].name2,
+        this.navChild[this.navChildIndex].index,
+        "this.navlist[this.navIndex].name"
+      );
+      // estate_m?id=1
       this.$router.push({
-        name: this.navlist[this.navIndex].name,
-        params: {
+        name: this.navlist[this.navIndex].name2,
+        query: {
           navIndex: index,
-        },
+          id: this.navChild[this.navChildIndex].ids
+        }
       });
-      this.$emit('sendIndex',index)
+      this.$emit("sendIndex", index);
       this.navChild = [];
     },
     navClose() {
       this.isOpen = false;
       this.navChild = [];
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -242,7 +199,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 200;
+  z-index: 999;
 }
 .header .nav {
   margin-left: 75px;
@@ -250,9 +207,9 @@ export default {
   height: 82px;
 }
 .header img {
-  margin-right: 75px;
-  width: 279px;
-  height: 80px;
+  margin-right: 50px;
+  width: 180px;
+  height: 160px;
   display: block;
 }
 .navlists {
@@ -262,7 +219,7 @@ export default {
   left: 50%;
   right: 50%;
   transform: translate(-50%, 0px);
-
+  z-index: 9999;
   width: 600px;
   height: 700px;
   background: #ffffff;
@@ -271,7 +228,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 150;
 }
 .navShow {
   animation: navDown 0.5s linear;

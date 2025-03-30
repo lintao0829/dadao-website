@@ -1,347 +1,862 @@
 <template>
+  <!-- 合作院校 -->
   <div class="estate">
-    <pageHeader_M @sendIndex="getIndex"></pageHeader_M>
-    <img
-      class="optionImg"
-      style="width: 100%; display: block"
-      src="../assets/0_common_M/option.png"
-      alt=""
-    />
-    <div class="content">
-      <div class="property" v-if="navIndex == 0">
-        <div v-if="!isDetail">
-          <div
-            class="propertyBox"
-            v-for="(item, index) in property"
-            :key="index"
-            @click="goDetail(true, item)"
+    <pageHeader_M></pageHeader_M>
+    <van-loading size="24px" color="#1989fa" vertical v-if="!isShowContent"
+      >加载中...</van-loading
+    >
+
+    <div v-if="this.$route.query.id === 1 && isShowContent">
+      <img
+        class="optionImg"
+        style="width: 100%;height: 84px; display: block"
+        src="../assets/0_common_M/option.png"
+        alt=""
+      />
+      <div class="content">
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >山东铝业职业学院</span
           >
-            <div
-              class="propertyImg"
-              :style="{ backgroundImage: 'url(' + item.titleimg + ')' }"
-            ></div>
-            <p class="title">{{ item.title }}</p>
-            <p class="usefor">项目用途：{{ item.category }}</p>
-            <p class="address">项目地址：{{ item.address }}</p>
-          </div>
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/shandonglvye.png"
+            alt=""
+          />
         </div>
-        <div class="propertyDetail" v-else>
-          <div class="backList" @click="goDetail(false)"><<<返回列表</div>
-
-          <div class="swiperBox">
-            <swiper
-              :options="swiperOption"
-              :not-next-tick="notNextTick"
-              ref="mySwiper"
-            >
-              <swiper-slide
-                v-for="(item, index) in detail.imglist"
-                :key="'img' + index"
-              >
-                <div
-                  class="detailImg"
-                  :style="{ backgroundImage: 'url(' + item + ')' }"
-                ></div>
-              </swiper-slide>
-              <div class="swiper-button-prev" slot="button-prev"></div>
-              <div class="swiper-button-next" slot="button-next"></div>
-            </swiper>
-          </div>
-
-          <div class="detailText">
-            <p class="title" v-text="detail.title"></p>
-            <p class="text">项目地址：{{ detail.address }}</p>
-            <p class="text">联系电话：{{ detail.contact }}</p>
-            <p class="text">{{ detail.abstract }}</p>
-
-            <p class="title">楼盘详情</p>
-            <div class="text">
-              <div class="subtitle">开发商：</div>
-              {{ detail.developer }}
-            </div>
-            <div class="text">
-              <div class="subtitle">车位数：</div>
-              {{ detail.parking_number }}个
-            </div>
-            <div class="text">
-              <div class="subtitle">占地面积：</div>
-              {{ detail.cover_area }}m²
-            </div>
-            <div class="text">
-              <div class="subtitle">物业公司：</div>
-              {{ detail.property_company }}
-            </div>
-            <div class="text">
-              <div class="subtitle">建筑面积：</div>
-              {{ detail.construction_area }}m²
-            </div>
-            <div class="text">
-              <div class="subtitle">建筑类别：</div>
-              {{ detail.category }}
-            </div>
-            <div class="text">
-              <div class="subtitle">绿化率：</div>
-              {{ detail.green_rate }}%
-            </div>
-
-            <p class="title">项目殊荣</p>
-            <p
-              class="text"
-              v-for="(item, index) in detail.honor"
-              :key="'honor' + index"
-            >
-              ● {{ item }}
-            </p>
-
-            <p class="title">周边配套</p>
-            <p
-              class="text"
-              v-for="(item, index) in detail.support"
-              :key="'support' + index"
-            >
-              {{ item }}
-            </p>
-          </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >滨州职业学院</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/binzhouzhiye.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >山东力明科技职业学院</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/shandongliming.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >济宁职业技术学院</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/jiningzhiye.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >烟台春山技工学校</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/yantaichunshan.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >青岛中工技工学校</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/qingdaozhonggong.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >德州近博技工学校
+          </span>
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/dezhoujinbo.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >山东黄河水利高级技工学校</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/shandonghuanghe.png"
+            alt=""
+          />
+        </div>
+        <div class="picText">
+          <span style="font-size: 14px;color:burlywood;font-weight: bold;"
+            >威海高级技工学校</span
+          >
+          <img
+            width="100%;"
+            height="160px"
+            style="margin-top: 10px;"
+            src="../assets/0_common_M/weihaigaoji.png"
+            alt=""
+          />
         </div>
       </div>
-      <div class="else" v-else>
-        <p class="title" v-text="estate[navIndex - 1].title"></p>
-        <p class="title_EN" v-text="estate[navIndex - 1].title_EN"></p>
-        <div class="text" v-html="estate[navIndex - 1].text"></div>
-        <img
-          src="../assets/3_estate_M/estate_m.png"
-          style="width: 100%; display: block; margin-top: 20px"
-          alt=""
-        />
+    </div>
+    <div v-if="this.$route.query.id === 2 && isShowContent">
+      <!-- <img
+        width="100%"
+        height="100px"
+        src="../assets/0_common/page_nav_back_old.png"
+        alt=""
+      /> -->
+      <!-- 视频部分 -->
+
+      <div style="padding:10px">
+        <span
+          style="display: block;margin-top: 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top: 6px;"
+        >
+          焜曦教育集团自<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >2012</span
+          >年起，十几年来，一直专注于<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >工业机器人技术人才的培养</span
+          >，通过深入有效的校企合作，打通<span
+            style="color:rgb(1,176,240);font-size: 16px;font-weight: 800;"
+            >产业链、创新链、教育链、人才链</span
+          >，在<span
+            style="color:rgb(0,176,80);font-size: 16px;font-weight: 800;"
+            >济南、青岛、淄博、德州、威海、泰安、济宁、烟台、潍坊、石家庄、西安</span
+          >等地设立培训基地.</span
+        >
+        <br />
+        <span
+          style="display: block; color: #616161;opacity: 0.8;font-weight: 700;padding-top: 6px;"
+        >
+          焜曦教育拥有经验丰富的<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >双师型教授</span
+          >手把手教课，开发<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >独立的课程体系</span
+          >，采用<span style="color:red;font-size: 16px;font-weight: 800;"
+            >理论、仿真、实操</span
+          >相结合的项目式教学模式,坚定不移的融入地方办学，深化产教融合、强化校企协同创新，已与<span
+            style="color:rgb(0,176,80);font-size: 16px;font-weight: 800;"
+            >200余家企业单位</span
+          >和<span style="color:rgb(0,176,80);font-size: 16px;font-weight: 800;"
+            >30家大、中专院校</span
+          >建立合作，建成校内<span
+            style="color:rgb(0,176,80);font-size: 16px;font-weight: 800;"
+            >实训基地50余个</span
+          >，培养专业技能人才<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >数十余万</span
+          >人，人才培养供不应求，就业率达<span
+            style="color:red;font-size: 18px;font-weight: 800;"
+            >100%</span
+          >。
+        </span>
+        <br />
+        <div class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/Timelapse_Crown.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <span
+          style="display: block;margin: 10px 0 30px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+        >
+          走出了一条具有自身特色的<span
+            style="color:rgb(0,176,80);font-size: 16px;font-weight: 800;"
+            >技能型、高水平、促就业</span
+          >的发展道路，经过多年的发展，焜曦集团已成为集人工智能机器人<span
+            style="color:red;font-size: 16px;font-weight: 800;"
+            >研发、设计、生产、培训以及学历教育</span
+          >于一体的综合性单位。
+        </span>
+        <br />
+      </div>
+    </div>
+    <div v-if="this.$route.query.id === 3 && isShowContent">
+      <!-- 培养类型 -->
+      <div class="education-info">
+        <h2 class="heading">学历教育</h2>
+        <div class="info-item">
+          <span class="label">热门专业：</span>
+          <span class="value">工业机器人</span>
+        </div>
+        <div class="info-item">
+          <span class="label">学习学制：</span>
+          <span class="value">三年制</span>
+        </div>
+        <div class="info-item">
+          <span class="label">学习目标：</span>
+          <span class="value">取得大学学历（3+3、3+4升学培养）</span>
+        </div>
+        <div class="info-item">
+          <span class="label">报名对象：</span>
+          <span class="value">应、往届初中毕业生</span>
+        </div>
+        <div class="info-item">
+          <span class="label">要求年龄：</span>
+          <span class="value">15周岁以上</span>
+        </div>
+      </div>
+      <div class="education-info">
+        <h2 class="heading">高级技工</h2>
+        <div class="sub-heading">
+          <span>应届初中生</span>
+        </div>
+        <div class="info-item">
+          <span class="label">学习学制：</span>
+          <span class="value">3+2高级技工</span>
+        </div>
+        <div class="sub-heading">
+          <span>应、往届高中、技工、中专毕业生</span>
+        </div>
+        <div class="info-item">
+          <span class="label">学习学制：</span>
+          <span class="value">高中起点（3年制）</span>
+        </div>
+        <div class="info-item">
+          <span class="label">学习目标：</span>
+          <span class="value">取得大学学历（3+3、3+4升学培养）</span>
+        </div>
+        <div class="info-item">
+          <span class="label">报名对象：</span>
+          <span class="value">应、往届初中毕业生</span>
+        </div>
+        <div class="info-item">
+          <span class="label">要求年龄：</span>
+          <span class="value">15周岁以上</span>
+        </div>
+      </div>
+      <div class="education-info">
+        <h2 class="heading">短期培训</h2>
+        <div class="info-item">
+          <span class="label">培养专业：</span>
+          <span class="value">工业机器人</span>
+        </div>
+        <div class="info-item">
+          <span class="label">培训时长：</span>
+          <span class="value">7—10个月</span>
+        </div>
+        <div class="info-item">
+          <span class="label">培养内容：</span>
+          <span class="value"
+            >工业机器人的操作、安装、调试、维修、维护、编程和设计</span
+          >
+        </div>
+        <div class="info-item">
+          <span class="label">学习目标：</span>
+          <span class="value">高薪资、保对口就业</span>
+        </div>
+        <div class="info-item">
+          <span class="label">招生对象：</span>
+          <span class="value"
+            >初中、中专、高中、大专、本科、退伍军人、社会青年</span
+          >
+        </div>
+        <div class="info-item">
+          <span class="label">要求年龄：</span>
+          <span class="value">17一28岁</span>
+        </div>
+      </div>
+      <div class="robot-talent">
+        <p>
+          <span class="highlight">集团在工业机器人的人才培养</span
+          >具备了独一无二的优势， 本着“<span class="quote"
+            >优势互补、合作共赢</span
+          >”的原则，共同培养
+          <span class="highlight">工业机器人专业人才</span
+          >，以满足企业急需且日益增长的
+          <span class="highlight">工业机器人专业人才需求</span>。
+        </p>
+      </div>
+    </div>
+    <div v-if="this.$route.query.id === 4 && isShowContent">
+      <div class="presentation-container">
+        <section class="slide">
+          <h1 class="title">使命</h1>
+          <div class="content">
+            <div class="text-content">
+              <h2>核心理念</h2>
+              <p>培养兼具知识与技能的时代栋梁。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="slide">
+          <h2 class="title">价值观</h2>
+          <div class="content">
+            <ul class="values-list">
+              <li>
+                <strong>育人至上：</strong>始终将学生发展放在首位，因材施教。
+              </li>
+              <li>
+                <strong>专业精进：</strong
+                >持续更新教学内容，提供高质量教育服务。
+              </li>
+              <li>
+                <strong>诚信协作：</strong
+                >秉承诚实守信原则，在各个环节保持真诚。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="slide">
+          <h2 class="title">愿景</h2>
+          <div class="content">
+            <p>
+              成为教育领域的标杆，以卓越的教育质量和创新的教育模式，培养出优秀人才。
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <contactUs v-if="this.$route.query.id === 5 && isShowContent"></contactUs>
+    <!-- 校长介绍人工智能 -->
+    <div
+      style="padding: 10px;"
+      v-if="this.$route.query.id === 6 && isShowContent"
+    >
+      <!-- 视频部分 -->
+      <div class="video-container">
+        <video width="100%" controls>
+          <source src="../assets/校长介绍人工智能.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <h3>教学模式</h3>
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        教学上采用<span style="color:red;font-size: 16px;font-weight: 800;"
+          >“理论、仿真、实训“三位一体”</span
+        >教学方式，学生能 学到真正的技术，掌握真正的技能。
+      </span>
+      <!-- 学校进行阶段性学习和测考，考试合格，进入下一个阶段的学习，考试不合格，继续本阶段学习，直到考试合格，包教包会。
+ -->
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        学校进行<span style="color:red;font-size: 16px;font-weight: 800;"
+          >阶段性学习和测考</span
+        >，考试合格，进入下一个阶段的学习，考试不合格，继续本阶段学习，直到考试合格，<span
+          style="color:red;font-size: 16px;font-weight: 800;"
+          >包教包会</span
+        >。
+      </span>
+      <!--  学习专业知识，掌握专业技能为主体，并开设了素质课、人文 素养教育、心理咨询、国学、礼仪、岗前培训、岗前面试以及体能训练等课程，使学生德、智、体全面发展。
+ -->
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        学习专业知识，掌握专业技能为主体，并开设了<span
+          style="color:red;font-size: 16px;font-weight: 800;"
+          >素质课、人文
+          素养教育、心理咨询、国学、礼仪、岗前培训、岗前面试以及体能训练</span
+        >等课程，使学生德、智、体全面发展。
+      </span>
+      <h3>管理模式</h3>
+      <!-- 教官与学生同吃同住，保证学生的安全和身心健康 -->
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        教官与学生<span
+          style="color:rgb(1, 176, 240);font-size: 16px;font-weight: 800;"
+          >同吃同住</span
+        >，保证学生的安全和身心健康。
+      </span>
+      <!-- 学校坚持军事化和人性化管理相结合，家校联合，培养德才兼备的复合型人才。 -->
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        学校坚持<span
+          style="color:rgb(1, 176, 240);font-size: 16px;font-weight: 800;"
+          >军事化和人性化管理</span
+        >相结合，家校联合，培养德才兼备的复合型人才。
+      </span>
+      <!-- 学校实施制度化和温情化相结合的管理模式，以学生为本的理念，学校开展各项活动，丰富校园生活。
+ -->
+      <span
+        style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
+      >
+        学校实施<span
+          style="color:rgb(1, 176, 240);font-size: 16px;font-weight: 800;"
+          >制度化和温情化</span
+        >相结合的管理模式，以学生为本的理念，学校开展各项活动，丰富校园生活。
+      </span>
+    </div>
+    <!-- 教师风采 -->
+    <div
+      style="padding: 10px;"
+      v-if="this.$route.query.id === 7 && isShowContent"
+    >
+      <img width="100%" src="../assets/pic3.jpg" alt="" />
+      <img width="100%" src="../assets/pic4.jpg" alt="" />
+      <img width="100%" src="../assets/pic5.jpg" alt="" />
+      <img width="100%" src="../assets/pic6.jpg" alt="" />
+    </div>
+    <!-- 学生风采 8 -->
+    <div
+      style="padding:10px"
+      v-if="this.$route.query.id === 8 && isShowContent"
+    >
+      <div
+        v-if="this.$route.query.id === 8 && isShowContent"
+        style="padding: 10px;"
+      >
+        <!-- Tab 控制 -->
+        <div class="tabs">
+          <button @click="setActiveTab(1)" :class="{ active: activeTab === 1 }">
+            听听学生真心话
+          </button>
+          <button @click="setActiveTab(2)" :class="{ active: activeTab === 2 }">
+            学习风采
+          </button>
+          <button @click="setActiveTab(3)" :class="{ active: activeTab === 3 }">
+            课余拉练风采
+          </button>
+          <button @click="setActiveTab(4)" :class="{ active: activeTab === 4 }">
+            课余校内风采
+          </button>
+        </div>
+
+        <!-- 视频展示 -->
+        <div v-if="activeTab === 1" class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/学生风采4.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div v-if="activeTab === 2" class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/学生风采1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div v-if="activeTab === 3" class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/学生风采3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div v-if="activeTab === 4" class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/学生风采2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
+import contactUs from "./contactUs.vue";
 export default {
-  name: "estate",
+  name: "estate_m",
+  components: {
+    contactUs
+  },
   data() {
     return {
-      notNextTick: true,
-      swiperOption: {
-        effect: "fade",
-        autoplay: 7000,
-        speed: 3000,
-        loop: true,
-        grabCursor: true, //鼠标触及变成手掌形状
-        setWrapperSize: true,
-        autoHeight: true,
-        pagination: ".swiper-pagination",
-        paginationClickable: true,
-        prevButton: ".swiper-button-prev",
-        nextButton: ".swiper-button-next",
-        // mousewheelControl: true,//鼠标滚轮控制轮播
-        bserver: true, //修改swiper自己或子元素时，自动初始化swiper
-        observeParents: true, //修改swiper的父元素时，自动初始化swiper
-        // onTransitionStart(swiper) {
-        //   console.log(swiper);
-        // },
-      },
-      navIndex: this.$route.params.navIndex,
-      count: 5,
-      isDetail: false, //是否为详情页面
-      property: [],
-      detail: [], //项目详情
-      estate: [
-        {
-          title: "大稻建设",
-          title_EN: "DA DAO CONSTRUCTION",
-          text:
-            "<b style='opacity:0.9'>巨门项目</b><br>本项目位于杭州萧山区钱江世纪城核心区域，东北侧为规划的亚运村，周边拟建大量超高层办公楼及大型居住小区。<br>地块总用地面积13741平方米，用地性质为商业金融业、文化娱乐用地。建筑高度150米。",
-          img: "../assets/3_estate_M/estate_m.png",
-        },
-        {
-          title: "大健康产业",
-          title_EN: "HEALTH INDUSTRY",
-          text:
-            "浙江大稻健康科技有限公司成立于2014年。公司集国内、外流的医疗资源为有健康需求的精英人士提供健康管理、海外医疗、体检全程咨询与服务的专业机构。<br>秉承“做客户身边值得信赖的健康管家”的服务理念，提供系统化顶级医疗服务。现有50人的专业的医疗服务团队，应用行业领先的服务工具，打造了科学实用的健康管理服务平台。公司积累了丰富的实际管理经验，先后成功为五百多位尊贵客户提供服务。公司发展立足杭州、面向全国及海内外，竭诚为个人高端客户、家庭客户、企业团队客户提供定制服务。<br>VIP就医服务体系，提供包括专属预约分诊、专属名医预约、专属导医陪护、专属专家会诊、专属住院管家、专属名医上门、专属药物代寄、配送在内的VIP专属就医服务。<br>",
-          img: "../assets/3_estate_M/estate_m.png",
-        },
-        {
-          title: "产业投资",
-          title_EN: "INDUSTRY INVESTMENT",
-          text:
-            "本项目南至机场高速路，西至新城路，北侧为规划道路。地块总用地面积13362平方米，建筑高度100米。<br>投资创新科技产业作为大稻集团的重点产业板块之一，为全面提升企业竞争力奠定了良好的基础。大稻集团充分发挥综合性地产开发优势，以自身标志性项目和现代服务业集聚区为阵地，在自身商业品牌独立运营及自主品牌建设的同时，积极寻求与国际国内知名企业的战略合作，借力发展，合作共赢。",
-          img: "../assets/3_estate_M/estate_m.png",
-        },
-        {
-          title: "文化艺术",
-          title_EN: "CULTURE AND ART",
-          text:
-            "大稻文化专注于提升地产艺术形象及为开发商提供创新的艺术营销策划服务，坚守美学信仰，以艺术的载体追求本真，让建筑与自然、与艺术、与文化精神往来，旨在创造出充分体现生活感受和艺术价值的人居生活。<br>结合国内外顶尖艺术家及设计师力量，为本地社区提供优质的人文艺术环境。",
-          img: "../assets/3_estate_M/estate_m.png",
-        },
-      ],
+      activeTab: 1, // 默认选中第一个视频
+      isShowContent: false,
+      isLoading: false
     };
   },
-  computed: {},
-  props: {},
-  components: {},
-  mounted() {
-    this.getProperty();
+  watch: {
+    "$route.query.id"(newId, oldId) {
+      // 每当 id 改变时，更新 currentId
+      console.log(`ID changed from ${oldId} to ${newId}`);
+    }
   },
   methods: {
-    getIndex(index) {
-      this.navIndex = index;
-    },
-    // 获取项目列表
-    getProperty() {
-      this.$axios({
-        url: "http://news.youtuosoftware.com/API/Industry/GetIndustryList",
-        method: "post",
-        data: {
-          pageNum: 1,
-          pageSize: this.count,
-        },
-      }).then((res) => {
-        this.property = res.data.datalist;
-        var i = 0;
-        for (var item of this.property) {
-          if (!item.category) {
-            this.property[i].category = " 规划中";
-          }
-          this.property[i].titleimg =
-            "http://news.youtuosoftware.com" + item.titleimg;
-          i++;
-        }
-      });
-    },
-    // 查看项目详情
-    goDetail(is, item) {
-      this.isDetail = is;
-      if (item) {
-        item.createtime = item.createtime.split("T")[0];
-        item.imglist = item.imglist.split(",");
-        for (var i in item.imglist) {
-          item.imglist[i] = "http://news.youtuosoftware.com" + item.imglist[i];
-        }
-        item.honor = item.honor.split(";");
-        if (!item.honor[0]) {
-          item.honor = ["暂无评比结果"];
-        }
-        item.support = item.support.split(";");
-        if (!item.support[0]) {
-          item.support = ["暂无规划数据"];
-        }
-        this.detail = item;
-        console.log(this.detail);
-      }
-    },
+    setActiveTab(tabIndex) {
+      this.activeTab = tabIndex; // 切换视频
+    }
   },
+  mounted() {
+    if (this.$route.query.id) {
+      setTimeout(() => {
+        this.isShowContent = true;
+      }, 600);
+    }
+  }
 };
 </script>
 
 <style scoped>
-.content {
-  padding: 40px 75px;
-}
-/* .property */
-.property .propertyBox {
-  margin-bottom: 40px;
-}
-.property .propertyBox .propertyImg {
+.tabs {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  height: 230px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs button {
+  flex: 1; /* 使按钮占满整个可用宽度 */
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.tabs button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.tabs button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
+}
+
+.tabs button:focus {
+  outline: none;
+}
+
+.video-container {
   margin-bottom: 20px;
 }
-.property .propertyBox p {
-  font-size: 24px;
-  font-family: Microsoft YaHei;
-  font-weight: bold;
-  color: #616161;
-  margin-bottom: 5px;
-  opacity: 0.7;
+.van-loading {
+  margin-top: 50%;
 }
-.property .propertyBox .title {
-  font-size: 28px;
-  font-family: PingFang SC;
-  font-weight: 800;
-  color: #b69d74;
-  margin-bottom: 15px;
+/* 容器样式 */
+.robot-talent {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4f7;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 30px auto;
+  text-align: center;
 }
-/* .propertyDetail */
-.propertyDetail .backList {
-  width: 100%;
-  padding-bottom: 20px;
-  font-size: 28px;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: #3d3d3d;
-  border-bottom: 3px dashed #e6e6e6;
+
+/* 段落样式 */
+.robot-talent p {
+  font-size: 16px;
+  color: #34495e;
+  line-height: 1.6;
 }
-.swiper-button-prev,
-.swiper-container-rtl .swiper-button-next {
-  background-image: url("../assets/3_estate_M/slide_L.png");
-  left: 64px;
-}
-.swiper-button-next,
-.swiper-container-rtl .swiper-button-prev {
-  background-image: url("../assets/3_estate_M/slide_R.png");
-  right: 64px;
-}
-.propertyDetail .detailImg {
-  width: 100%;
-  height: 320px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin-bottom: 40px;
-}
-.propertyDetail .detailText {
-  margin: 40px 0 20px;
-}
-.propertyDetail .detailText .title {
-  margin-top: 40px;
-  font-size: 28px;
-  font-family: PingFang SC;
-  font-weight: 800;
-  color: #b69d74;
-}
-.propertyDetail .detailText .text {
-  margin-top: 10px;
-  font-size: 24px;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: #616161;
-  line-height: 36px;
-  opacity: 0.8;
-  display: flex;
-}
-.propertyDetail .detailText .text .subtitle {
-  width: 120px;
-  text-align: right;
-}
-/* .else */
-.else .title {
-  font-size: 30px;
-  font-family: PingFang SC;
-  font-weight: 800;
-  color: #b69d74;
-  margin-bottom: 15px;
-}
-.else .title_EN {
-  font-size: 32px;
-  font-family: Roboto;
-  font-weight: bold;
-  color: #616161;
-  opacity: 0.3;
-  margin-bottom: 23px;
-}
-.else .text {
-  font-size: 26px;
-  font-family: PingFang SC;
+
+/* 强调的文本样式 */
+.highlight {
+  color: #000099;
   font-weight: 600;
-  color: #3d3d3d;
-  line-height: 40px;
-  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* 引用的文本样式 */
+.quote {
+  color: #e67e22;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* 响应式样式：小屏设备 */
+@media screen and (max-width: 600px) {
+  .robot-talent {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .robot-talent p {
+    font-size: 14px;
+  }
+
+  .highlight {
+    font-size: 14px;
+  }
+
+  .quote {
+    font-size: 14px;
+  }
+}
+
+.content {
+  padding: 0 75px;
+  margin-top: 10px;
+}
+.content p {
+  font-size: 18px;
+}
+.picText {
+  margin-bottom: 30px;
+}
+/* 样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 标题样式 */
+.heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 标签样式 */
+.label {
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: 600;
+  width: 120px;
+  display: inline-block;
+}
+
+/* 内容样式 */
+.value {
+  font-size: 16px;
+  color: #34495e;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+/* 样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 容器样式 */
+.education-info {
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 650px;
+  margin: 30px auto;
+  background: linear-gradient(145deg, #f8f8f8, #ffffff);
+}
+
+/* 子标题样式 */
+.sub-heading {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* 每个信息项 */
+.info-item {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 10px;
+}
+
+/* 标签样式 */
+.label {
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: 600;
+  width: 150px;
+  display: inline-block;
+}
+
+/* 内容样式 */
+.value {
+  font-size: 16px;
+  color: #34495e;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+/* 响应式样式：小屏设备 */
+@media screen and (max-width: 600px) {
+  .education-info {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .label {
+    font-size: 14px;
+    width: 120px;
+  }
+
+  .value {
+    font-size: 14px;
+  }
+}
+/* 样式容器 */
+.presentation-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+}
+
+/* 幻灯片 */
+.slide {
+  padding: 50px 0 50px 80px;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  border-radius: 12px; /* 圆角效果 */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.07); /* 大气阴影效果 */
+  transition: all 0.3s ease-in-out; /* 平滑过渡 */
+}
+
+/* 标题样式 */
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2c3e50;
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+  background: linear-gradient(45deg, #3498db, #e74c3c);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+/* 内容区域 */
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 图片样式 */
+.slide-image {
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* 图片动画 */
+.slide-image:hover {
+  transform: scale(1.05);
+}
+
+/* 文本内容区域 */
+.text-content {
+  width: 50%;
+  padding: 20px;
+  font-size: 18px;
+  color: #34495e;
+}
+
+/* 价值观列表 */
+.values-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.values-list li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.values-list strong {
+  color: #e67e22;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .presentation-container {
+    width: 100%;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .slide-image {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .text-content {
+    width: 80%;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 28px;
+    padding: 15px;
+  }
+}
+
+/* 视频部分样式 */
+.video-container {
+  margin: 30px 0;
+  background-color: #000; /* 给视频添加黑色背景 */
+  padding: 10px;
+  border-radius: 10px; /* 给视频容器圆角 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 视频容器阴影效果 */
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+video {
+  max-width: 100%;
+  border-radius: 8px; /* 视频边角圆滑 */
 }
 </style>

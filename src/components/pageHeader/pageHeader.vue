@@ -8,10 +8,18 @@
     <header :class="{ header_home: page_now == 1 && isScroll == false }">
       <img
         v-if="page_now == 1 && isScroll == false"
-        src="@/assets/0_common/logo.png"
-        alt=""
+        src="@/assets/0_common/kunxiLogo.png"
+        alt="1111"
       />
-      <img v-else src="@/assets/0_common/logo_else.png" @click="goPage('Home','/','1')" alt="" />
+      <img
+        v-else
+        src="@/assets/0_common/kunxiLogo.png"
+        @click="goPage('Home', '/', '1')"
+        alt="2222"
+      />
+      <span style="color:#000099;font-size: 18px;font-weight: 800;"
+        >焜曦教育</span
+      >
       <div class="navlist">
         <div
           class="nav"
@@ -26,7 +34,7 @@
           ></div>
         </div>
       </div>
-    </header>    
+    </header>
   </div>
 </template>
 
@@ -40,62 +48,61 @@ export default {
           title: "首页",
           name: "Home",
           url: "/",
-          index: 1,
+          index: 1
         },
+        // {
+        //   title: "走进焜曦",
+        //   name: "About",
+        //   url: "/about",
+        //   index: 2
+        // },
+        // {
+        //   title: "大稻产业pc",
+        //   name: "Estate",
+        //   url: "/estate",
+        //   index: 3
+        // },
+        // {
+        //   title: "合作伙伴",
+        //   name: "Partner",
+        //   url: "/partner",
+        //   index: 4
+        // },
+        // {
+        //   title: "新闻动态",
+        //   name: "News",
+        //   url: "/news",
+        //   index: 5
+        // },
+        // {
+        //   title: "加入大稻",
+        //   name: "Join",
+        //   url: "/join",
+        //   index: 6
+        // },
         {
-          title: "走进大稻",
-          name: "About",
-          url: "/about",
-          index: 2,
-        },
-        {
-          title: "大稻产业",
-          name: "Estate",
-          url: "/estate",
-          index: 3,
-        },
-        {
-          title: "合作伙伴",
-          name: "Partner",
-          url: "/partner",
-          index: 4,
-        },
-        {
-          title: "新闻动态",
-          name: "News",
-          url: "/news",
-          index: 5,
-        },
-        {
-          title: "加入大稻",
-          name: "Join",
-          url: "/join",
-          index: 6,
-        },
-        {
-          title: "联络大稻",
+          title: "联络焜曦",
           name: "Contact",
           url: "/contact",
-          index: 7,
-        },
-      ],      
-      page_now: 1, //当前页面，默认为1首页
+          index: 7
+        }
+      ],
+      page_now: 1 //当前页面，默认为1首页
     };
   },
-  props: ['isScroll'],
+  props: ["isScroll"],
   components: {},
-  created () {
-  },
+  created() {},
   mounted() {
-    var path_arr = window.location.href.split('/')
-    var path_length = path_arr.length
-    var path = '/' + path_arr[path_length-1]    
-    for (var i of this.navlist){
+    var path_arr = window.location.href.split("/");
+    var path_length = path_arr.length;
+    var path = "/" + path_arr[path_length - 1];
+    for (var i of this.navlist) {
       if (i.url == path) {
-        this.page_now = i.index
-        return
+        this.page_now = i.index;
+        return;
       }
-    }    
+    }
   },
   methods: {
     goPage(name, url, index) {
@@ -103,28 +110,28 @@ export default {
       this.$router.push({
         name: name,
         params: {
-          navIndex: index,
-        },
+          navIndex: index
+        }
       });
     },
-    goPage_News(item){
+    goPage_News(item) {
       this.$router.push({
         name: item.name,
         params: {
           newsDetail: item.item
-        },
+        }
       });
     },
-    goPage_Estate(item){
+    goPage_Estate(item) {
       this.$router.push({
         name: item.name,
         params: {
           navIndex: item.index,
           selectIndex: item.selectIndex
-        },
+        }
       });
     }
-  },
+  }
 };
 </script>
 
@@ -144,8 +151,8 @@ header {
   justify-content: space-between;
 
   img {
-    width: 190px;
-    height: 50;
+    width: 180px;
+    height: 160px;
     margin-left: 100px;
     cursor: pointer;
   }
@@ -155,6 +162,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     .nav {
       height: 100px;
       position: relative;
@@ -186,10 +194,12 @@ header {
         left: 0;
         visibility: hidden;
       }
+
       .dash_chose {
         visibility: visible;
       }
     }
+
     .nav:hover {
       .dash {
         visibility: visible;
@@ -200,9 +210,11 @@ header {
 
 .header_home {
   background: transparent;
+
   .navlist {
     .nav {
       color: #ffffff;
+
       .dash {
         width: 100%;
         height: 5px;
