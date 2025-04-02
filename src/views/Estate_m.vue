@@ -2,15 +2,21 @@
   <!-- 合作院校 -->
   <div class="estate">
     <pageHeader_M></pageHeader_M>
-    <van-loading size="24px" color="#1989fa" vertical v-if="!isShowContent"
+    <van-loading size="24px" color="gray" vertical v-if="!isShowContent"
       >加载中...</van-loading
     >
 
     <div v-if="this.$route.query.id === 1 && isShowContent">
+      <div style="display: flex; justify-content: center;">
+        <span
+          style="font-size: 18px;color:burlywood;font-weight: bold;margin-bottom: 20px;margin-top: 10px;"
+          >合作院校</span
+        >
+      </div>
       <img
         class="optionImg"
-        style="width: 100%;height: 84px; display: block"
-        src="../assets/0_common_M/option.png"
+        style="width: 100%;height: 120px; display: block"
+        src="../assets/0_common_M/hezuoyuanxiao.jpg"
         alt=""
       />
       <div class="content">
@@ -100,13 +106,13 @@
         </div>
         <div class="picText">
           <span style="font-size: 14px;color:burlywood;font-weight: bold;"
-            >山东黄河水利高级技工学校</span
+            >山东深泉技师学院</span
           >
           <img
             width="100%;"
             height="160px"
             style="margin-top: 10px;"
-            src="../assets/0_common_M/shandonghuanghe.png"
+            src="../assets/0_common_M/shandongshenquan.jpg"
             alt=""
           />
         </div>
@@ -200,7 +206,7 @@
         <br />
       </div>
     </div>
-    <div v-if="this.$route.query.id === 3 && isShowContent">
+    <div class="estate3" v-if="this.$route.query.id === 3 && isShowContent">
       <!-- 培养类型 -->
       <div class="education-info">
         <h2 class="heading">学历教育</h2>
@@ -454,6 +460,12 @@
             Your browser does not support the video tag.
           </video>
         </div>
+        <div v-if="activeTab === 1" class="video-container">
+          <video width="100%" controls>
+            <source src="../assets/学生风采5.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div v-if="activeTab === 2" class="video-container">
           <video width="100%" controls>
             <source src="../assets/学生风采1.mp4" type="video/mp4" />
@@ -511,7 +523,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .tabs {
   display: flex;
   justify-content: space-between;
@@ -608,7 +620,7 @@ export default {
 }
 
 .content {
-  padding: 0 75px;
+  padding: 0 10px;
   margin-top: 10px;
 }
 .content p {
@@ -616,6 +628,7 @@ export default {
 }
 .picText {
   margin-bottom: 30px;
+  width: 100%;
 }
 /* 样式重置 */
 * {
@@ -650,59 +663,108 @@ export default {
   flex-grow: 1;
 }
 
-/* 样式重置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+.estate3 {
+  // background-color: red;
 
-/* 容器样式 */
-.education-info {
-  font-family: "Arial", sans-serif;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-width: 650px;
-  margin: 30px auto;
-  background: linear-gradient(145deg, #f8f8f8, #ffffff);
-}
+  /* 页面外观 */
+  h2.heading {
+    font-size: 32px;
+    color: #fff;
+    background: linear-gradient(90deg, #ff7a18, #af002d, #2a7cff);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
 
-/* 子标题样式 */
-.sub-heading {
-  font-size: 12px;
-  color: #7f8c8d;
-  font-weight: 600;
-  display: inline-block;
-  margin-bottom: 15px;
-  text-align: center;
-}
+  .sub-heading span {
+    font-weight: bold;
+    color: #f77f00;
+    font-size: 18px;
+    margin-top: 15px;
+  }
 
-/* 每个信息项 */
-.info-item {
-  display: flex;
-  margin-bottom: 20px;
-  align-items: center;
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 10px;
-}
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-/* 标签样式 */
-.label {
-  font-size: 16px;
-  color: #7f8c8d;
-  font-weight: 600;
-  width: 150px;
-  display: inline-block;
-}
+  .info-item .label {
+    font-weight: bold;
+    color: #0056b3;
+  }
 
-/* 内容样式 */
-.value {
-  font-size: 16px;
-  color: #34495e;
-  font-weight: 500;
-  flex-grow: 1;
+  .info-item .value {
+    color: #333;
+  }
+
+  /* 高亮文字样式 */
+  .highlight {
+    color: #ff5c8d;
+    font-weight: bold;
+  }
+
+  /* 引用文字样式 */
+  .quote {
+    color: #00bcd4;
+    font-style: italic;
+  }
+
+  /* 各个 education-info 的不同背景色 */
+  .education-info:nth-child(odd) {
+    background-color: #e8f5e9;
+  }
+
+  .education-info:nth-child(even) {
+    background-color: #e1f5fe;
+  }
+
+  /* Robot Talent 语句区域 */
+  .robot-talent {
+    // background: linear-gradient(135deg, #6a1b9a, #ff6f00);
+    background: #e1f5fe;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    margin: 0;
+  }
+
+  .robot-talent p {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    h2.heading {
+      font-size: 26px;
+      padding: 8px 15px;
+    }
+
+    .info-item {
+      flex-direction: column;
+      padding: 12px 10px;
+    }
+
+    .info-item .label,
+    .info-item .value {
+      font-size: 14px;
+    }
+
+    .sub-heading span {
+      font-size: 16px;
+    }
+
+    .robot-talent p {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+  }
 }
 
 /* 响应式样式：小屏设备 */
