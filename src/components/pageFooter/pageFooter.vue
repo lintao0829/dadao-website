@@ -4,7 +4,9 @@
     <div class="copyright">
       <p>
         版权所有：焜曦教育 备案号
-        <a href="https://beian.miit.gov.cn" target="_blank">鲁123456789</a>
+        <a href="https://beian.miit.gov.cn" target="_blank"
+          >鲁ICP备2025152373号-1</a
+        >
       </p>
       <p>联系焜曦教育：13188971869</p>
     </div>

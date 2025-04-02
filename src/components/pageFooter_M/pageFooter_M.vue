@@ -3,7 +3,7 @@
   <div class="footer">
     <p>
       版权所有：焜曦教育<br />
-      备案号 鲁ICP备18048792号-1
+      备案号 鲁ICP备2025152373号-1
     </p>
   </div>
 </template>
