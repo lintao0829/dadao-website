@@ -207,100 +207,116 @@
       </div>
     </div>
     <div class="estate3" v-if="this.$route.query.id === 3 && isShowContent">
-      <!-- 培养类型 -->
-      <div class="education-info">
-        <h2 class="heading">学历教育</h2>
-        <div class="info-item">
-          <span class="label">热门专业：</span>
-          <span class="value">工业机器人</span>
+      <div class="education-container">
+        <!-- 学历教育部分 -->
+        <div class="education-card">
+          <div class="card-header">
+            <h2>学历教育</h2>
+            <div class="header-decoration"></div>
+          </div>
+          <div class="card-content">
+            <div class="info-row">
+              <span class="info-label">热门专业</span>
+              <span class="info-value">工业机器人</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">学习学制</span>
+              <span class="info-value">三年制</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">学习目标</span>
+              <span class="info-value">取得大学学历（3+3、3+4升学培养）</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">报名对象</span>
+              <span class="info-value">应、往届初中毕业生</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">要求年龄</span>
+              <span class="info-value">15周岁以上</span>
+            </div>
+          </div>
         </div>
-        <div class="info-item">
-          <span class="label">学习学制：</span>
-          <span class="value">三年制</span>
+
+        <!-- 高级技工部分 -->
+        <div class="education-card">
+          <div class="card-header">
+            <h2>高级技工</h2>
+            <div class="header-decoration"></div>
+          </div>
+          <div class="card-content">
+            <div class="sub-section">
+              <h3>应届初中生</h3>
+              <div class="info-row">
+                <span class="info-label">学习学制</span>
+                <span class="info-value">3+2高级技工</span>
+              </div>
+            </div>
+            <div class="sub-section">
+              <h3>应、往届高中、技工、中专毕业生</h3>
+              <div class="info-row">
+                <span class="info-label">学习学制</span>
+                <span class="info-value">高中起点（3年制）</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">学习目标</span>
+                <span class="info-value">取得大学学历（3+3、3+4升学培养）</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">报名对象</span>
+                <span class="info-value">应、往届初中毕业生</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">要求年龄</span>
+                <span class="info-value">15周岁以上</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="info-item">
-          <span class="label">学习目标：</span>
-          <span class="value">取得大学学历（3+3、3+4升学培养）</span>
+
+        <!-- 短期培训部分 -->
+        <div class="education-card">
+          <div class="card-header">
+            <h2>短期培训</h2>
+            <div class="header-decoration"></div>
+          </div>
+          <div class="card-content">
+            <div class="info-row">
+              <span class="info-label">培养专业</span>
+              <span class="info-value">工业机器人</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">培训时长</span>
+              <span class="info-value">7—10个月</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">培养内容</span>
+              <span class="info-value">工业机器人的操作、安装、调试、维修、维护、编程和设计</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">学习目标</span>
+              <span class="info-value">高薪资、保对口就业</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">招生对象</span>
+              <span class="info-value">初中、中专、高中、大专、本科、退伍军人、社会青年</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">要求年龄</span>
+              <span class="info-value">17一28岁</span>
+            </div>
+          </div>
         </div>
-        <div class="info-item">
-          <span class="label">报名对象：</span>
-          <span class="value">应、往届初中毕业生</span>
+
+        <!-- 机器人人才说明部分 -->
+        <div class="robot-talent-card">
+          <p>
+            <span class="highlight">集团在工业机器人的人才培养</span>
+            具备了独一无二的优势，本着"<span class="quote">优势互补、合作共赢</span>"的原则，共同培养
+            <span class="highlight">工业机器人专业人才</span>，以满足企业急需且日益增长的
+            <span class="highlight">工业机器人专业人才需求</span>。
+          </p>
         </div>
-        <div class="info-item">
-          <span class="label">要求年龄：</span>
-          <span class="value">15周岁以上</span>
-        </div>
-      </div>
-      <div class="education-info">
-        <h2 class="heading">高级技工</h2>
-        <div class="sub-heading">
-          <span>应届初中生</span>
-        </div>
-        <div class="info-item">
-          <span class="label">学习学制：</span>
-          <span class="value">3+2高级技工</span>
-        </div>
-        <div class="sub-heading">
-          <span>应、往届高中、技工、中专毕业生</span>
-        </div>
-        <div class="info-item">
-          <span class="label">学习学制：</span>
-          <span class="value">高中起点（3年制）</span>
-        </div>
-        <div class="info-item">
-          <span class="label">学习目标：</span>
-          <span class="value">取得大学学历（3+3、3+4升学培养）</span>
-        </div>
-        <div class="info-item">
-          <span class="label">报名对象：</span>
-          <span class="value">应、往届初中毕业生</span>
-        </div>
-        <div class="info-item">
-          <span class="label">要求年龄：</span>
-          <span class="value">15周岁以上</span>
-        </div>
-      </div>
-      <div class="education-info">
-        <h2 class="heading">短期培训</h2>
-        <div class="info-item">
-          <span class="label">培养专业：</span>
-          <span class="value">工业机器人</span>
-        </div>
-        <div class="info-item">
-          <span class="label">培训时长：</span>
-          <span class="value">7—10个月</span>
-        </div>
-        <div class="info-item">
-          <span class="label">培养内容：</span>
-          <span class="value"
-            >工业机器人的操作、安装、调试、维修、维护、编程和设计</span
-          >
-        </div>
-        <div class="info-item">
-          <span class="label">学习目标：</span>
-          <span class="value">高薪资、保对口就业</span>
-        </div>
-        <div class="info-item">
-          <span class="label">招生对象：</span>
-          <span class="value"
-            >初中、中专、高中、大专、本科、退伍军人、社会青年</span
-          >
-        </div>
-        <div class="info-item">
-          <span class="label">要求年龄：</span>
-          <span class="value">17一28岁</span>
-        </div>
-      </div>
-      <div class="robot-talent">
-        <p>
-          <span class="highlight">集团在工业机器人的人才培养</span
-          >具备了独一无二的优势， 本着“<span class="quote"
-            >优势互补、合作共赢</span
-          >”的原则，共同培养
-          <span class="highlight">工业机器人专业人才</span
-          >，以满足企业急需且日益增长的
-          <span class="highlight">工业机器人专业人才需求</span>。
-        </p>
       </div>
     </div>
     <div v-if="this.$route.query.id === 4 && isShowContent">
@@ -362,7 +378,7 @@
         style="display: block;margin: 0px 0 10px; color: #616161;opacity: 0.8;font-weight: 700;padding-top:6px"
       >
         教学上采用<span style="color:red;font-size: 16px;font-weight: 800;"
-          >“理论、仿真、实训“三位一体”</span
+          >"理论、仿真、实训"三位一体"</span
         >教学方式，学生能 学到真正的技术，掌握真正的技能。
       </span>
       <!-- 学校进行阶段性学习和测考，考试合格，进入下一个阶段的学习，考试不合格，继续本阶段学习，直到考试合格，包教包会。
@@ -664,105 +680,129 @@ export default {
 }
 
 .estate3 {
-  // background-color: red;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
 
-  /* 页面外观 */
-  h2.heading {
-    font-size: 32px;
-    color: #fff;
-    background: linear-gradient(90deg, #ff7a18, #af002d, #2a7cff);
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-
-  .sub-heading span {
-    font-weight: bold;
-    color: #f77f00;
-    font-size: 18px;
-    margin-top: 15px;
-  }
-
-  .info-item {
+  .education-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    gap: 30px;
   }
 
-  .info-item .label {
-    font-weight: bold;
-    color: #0056b3;
-  }
+  .education-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease;
 
-  .info-item .value {
-    color: #333;
-  }
-
-  /* 高亮文字样式 */
-  .highlight {
-    color: #ff5c8d;
-    font-weight: bold;
-  }
-
-  /* 引用文字样式 */
-  .quote {
-    color: #00bcd4;
-    font-style: italic;
-  }
-
-  /* 各个 education-info 的不同背景色 */
-  .education-info:nth-child(odd) {
-    background-color: #e8f5e9;
-  }
-
-  .education-info:nth-child(even) {
-    background-color: #e1f5fe;
-  }
-
-  /* Robot Talent 语句区域 */
-  .robot-talent {
-    // background: linear-gradient(135deg, #6a1b9a, #ff6f00);
-    background: #e1f5fe;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    margin: 0;
-  }
-
-  .robot-talent p {
-    font-size: 12px;
-    line-height: 1.2;
-  }
-
-  /* 响应式设计 */
-  @media (max-width: 768px) {
-    h2.heading {
-      font-size: 26px;
-      padding: 8px 15px;
+    &:hover {
+      transform: translateY(-5px);
     }
 
-    .info-item {
-      flex-direction: column;
-      padding: 12px 10px;
+    .card-header {
+      background: linear-gradient(90deg, #2196F3, #1976D2);
+      padding: 20px;
+      position: relative;
+
+      h2 {
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .header-decoration {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #FFC107, #FF9800);
+      }
     }
 
-    .info-item .label,
-    .info-item .value {
-      font-size: 14px;
+    .card-content {
+      padding: 20px;
     }
 
-    .sub-heading span {
+    .sub-section {
+      margin-bottom: 20px;
+      
+      h3 {
+        color: #1976D2;
+        font-size: 18px;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+    }
+
+    .info-row {
+      display: flex;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .info-label {
+        width: 120px;
+        color: #666;
+        font-weight: 500;
+      }
+
+      .info-value {
+        flex: 1;
+        color: #333;
+      }
+    }
+  }
+
+  .robot-talent-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+
+    p {
+      color: #333;
+      line-height: 1.8;
       font-size: 16px;
+      text-align: center;
     }
 
-    .robot-talent p {
-      font-size: 12px;
-      line-height: 1.4;
+    .highlight {
+      color: #1976D2;
+      font-weight: 600;
+    }
+
+    .quote {
+      color: #FF9800;
+      font-style: italic;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .estate3 {
+    padding: 10px;
+
+    .education-card {
+      .card-header h2 {
+        font-size: 20px;
+      }
+
+      .info-row {
+        flex-direction: column;
+        gap: 5px;
+
+        .info-label {
+          width: 100%;
+        }
+      }
     }
   }
 }
